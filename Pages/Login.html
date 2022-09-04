@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Social</title>
+    <script src="../Javascript/main.js">
+        function checkPassword() {
+            users.forEach((x , i) => {
+            for(const key in x) {
+                if (key === password){
+                    console.log(users[key])
+                }
+            }
+        })
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Login</h1>
+        <form>
+            <p><label for="username">Username: </label><input type="text" name="username"></p>
+            <p><label for="password">Password: </label><input type="password" name="password"></p>
+            <button onsubmit="() => checkPassword()">Create Account</button>
+        </form><br>
+        <a href="./create.html">Don't have an account? Create one.</a>
+    </center>
+</body>
+</html>
