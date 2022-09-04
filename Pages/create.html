@@ -7,14 +7,24 @@
     <title>Simple Social</title>
 </head>
 <body>
+    <script src="../Javascript/main.js"></script>
     <center>
         <h1>Login</h1>
-        <form>
-            <p><label for="username">Username</label><input type="text" name="username"></p>
-            <p><label for="password">Password</label><input type="password" name="password"></p>
-            <button onsubmit="() => checkPassword()">Create Account</button>
-        </form><br>
-        <a href="./create.html">Don't have an account? Create one.</a>
+            <img id="profilepic" src="" alt="What you look like."><br>
+            <input id="name" type="file" name="image" accept="image/*" onchange="imageHandler()"><br>
+            <label for="username">Username</label>
+            <p><input id="username" type="text" name="username"></p><br>
+            <label for="password">Password</label>
+            <p><input id="password" type="password" name="password"></p><br>
+            <label for="password">Personal statement</label>
+            <p><textarea id="personalStatement" name="personalStatement" cols="30" rows="4"></textarea></p><br>
+            <label for="education">Education</label>
+            <p><input id="education" type="text" name="education"></p><br>
+            <label for="hobbies">Hobbies</label>
+            <p><input type="text" id="hobby"> <button onclick="hobbyHandler()">Add Hobby</button></p><br>
+            <input type="hidden" name="hobbies" id="hobbies">
+            <button onclick="submitHandler()">Create Account</button><br>
+        <a href="./create.html">Already have an account? Login in.</a>
     </center>
 </body>
 </html>
