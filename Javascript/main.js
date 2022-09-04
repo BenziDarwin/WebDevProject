@@ -1,6 +1,7 @@
 
 users = []
-
+list = []
+console.log(users)
 function imageHandler() {
     image = document.getElementById("profilepic")
     reader = new FileReader()
@@ -18,24 +19,25 @@ function checkPassword() {
 }
 
 function submitHandler() {
-    username = document.body.getElementById("username")
-    password = document.body.getElementById("password")
-    personalStatement = document.body.getElementById("personalStatement")
-    education = document.body.getElementById("education")
-    hobbies = document.body.getElementById ("hobbies")
+    username = document.getElementById("username")
+    password = document.getElementById("password")
+    personalStatement = document.getElementById("personalStatement")
+    education = document.getElementById("education")
+    hobbies = list
     user = {
         name: username.value,
         password: password.value,
         personalStatement: personalStatement.value,
         education: education.value,
-        hobbies: hobbies.value
+        hobbies: hobbies
     }
     users.push(user)
-    console.log(users)
+    sessionStorage.setItem("users",JSON.stringify(users))
+    console.log(JSON.parse(sessionStorage.getItem("users")))
+    window.location = "./chat.html"
 }
-list = []
 function hobbyHandler() {
     hobby = document.getElementById("hobby")
     list.push(hobby.value)
-    console.log(list)
+    hobby.value = ""
 }
