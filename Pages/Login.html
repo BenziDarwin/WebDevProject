@@ -20,13 +20,11 @@
 <body>
     <center>
         <h1>Login</h1>
-        <form>
             <label for="username">Username</label>
-            <p><input type="text" name="username"></p><br>
+            <p><input id="username" type="text" name="username"></p><br>
             <label for="password">Password</label>
-            <p><input type="password" name="password"></p><br>
-            <button onsubmit="() => checkPassword()">Create Account</button>
-        </form><br>
+            <p><input id="password" type="password" name="password"></p><br>
+            <button onclick="checkPassword()">Create Account</button><br>
         <a href="./create.html">Don't have an account? Create one.</a>
     </center>
 </body>
