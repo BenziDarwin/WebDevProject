@@ -10,3 +10,9 @@
     left: 30px;
     cursor:pointer;
 }
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+}
