@@ -16,3 +16,7 @@
     grid-template-columns: auto auto auto;
     gap: 50px;
 }
+
+body {
+    background-color: antiquewhite;
+}
