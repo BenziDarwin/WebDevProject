@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <img id="profile" src="" alt="profile"><br>
+        <p id="user">Username</p>
+        <h4>Personal Statement:</h4>
+        <p id="ps">Words</p>
+        <h4>Education:</h4>
+        <p id="edu">Current level</p>
+        <h4>Hobbies:</h4>
+        <ul id="hob">
+        </ul>
+        <button onclick="window.location = './edit.html'">Edit</button>&nbsp;<button onclick="window.location = './chat.html'">Back to chat</button>
+    </center>
+    <script>
+        userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+        username = document.getElementById("user")
+        statement = document.getElementById("ps")
+        education = document.getElementById("edu")
+        hobbies = document.getElementById("hob")
+        image = document.getElementById("profile")
+        username.innerHTML = userData.name
+        statement.innerHTML = userData.personalStatement
+        education.innerHTML = userData.education
+        image.src = userData.img
+        userData.hobbies.forEach((x,i) => {
+            li = document.createElement("li")
+            node = document.createTextNode(x)
+            li.appendChild(node)
+            hobbies.appendChild(li)
+        })
+    </script>
+</body>
+</html>

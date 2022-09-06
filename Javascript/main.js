@@ -1,9 +1,7 @@
-
-users = []
 list = []
-if (window.location.pathname === "/Pages/chat.html") {
-    displayMessages()
-}
+displayMessages()
+editProfile()
+hobbyHandler()
 
 function imageHandler() {
     image = document.getElementById("profilepic")
@@ -23,6 +21,7 @@ function checkPassword() {
     usersList.forEach((x,i) => {
         if(x.name === username.value) {
             if (x.password === password.value) {
+                sessionStorage.setItem("currentUserDetails",JSON.stringify(x))
                 window.location = "./chat.html"
             }
             else{
@@ -37,34 +36,68 @@ function checkPassword() {
 }
 
 function submitHandler() {
+    image = document.getElementById("profilepic")
     username = document.getElementById("username")
     password = document.getElementById("password")
     personalStatement = document.getElementById("personalStatement")
     education = document.getElementById("education")
     hobbies = list
     user = {
+        img: image.src,
         name: username.value,
         password: password.value,
         personalStatement: personalStatement.value,
         education: education.value,
         hobbies: hobbies
     }
-    users.push(user)
-    sessionStorage.setItem("users",JSON.stringify(users))
+    
+    if (JSON.parse(sessionStorage.getItem("users")) !== null) {
+        users = JSON.parse(sessionStorage.getItem("users"))
+        users.push(user)
+        sessionStorage.setItem("users",JSON.stringify(users))
+    }else{
+        users = []
+        users.push(user)
+        sessionStorage.setItem("users",JSON.stringify(users))
+    }
     sessionStorage.setItem("currentUser",username.value)
+    sessionStorage.setItem("currentUserDetails",JSON.stringify(user))
     console.log(JSON.parse(sessionStorage.getItem("users")))
     window.location = "./chat.html"
 }
 function hobbyHandler() {
     hobby = document.getElementById("hobby")
-    list.push(hobby.value)
-    hobby.value = ""
+    if(sessionStorage.getItem("currentUserDetails")!== null) {
+        details = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+        list = details.hobbies
+        list.push(hobby.value)
+        details.hobbies = list
+        sessionStorage.setItem("currentUserDetails", JSON.stringify(details))
+        hobby.value = ""
+        hobbyList = document.getElementById("hobbyList")
+        hobbyList.innerHTML = ""
+        list.forEach((x,i) => {
+        li = document.createElement("li")
+        node = document.createTextNode(x)
+        li.appendChild(node)
+        hobbyList.appendChild(li)
+        })
+    } else {
+        list.push(hobby.value)
+        hobby.value = ""
+        hobbyList = document.getElementById("hobbyList")
+        hobbyList.innerHTML = ""
+        list.forEach((x,i) => {
+            li = document.createElement("li")
+            node = document.createTextNode(x)
+            li.appendChild(node)
+            hobbyList.appendChild(li)
+            })
+    }
 }
-
 function displayMessages() {
     box = document.getElementById("box")
     box.innerHTML = "";
-    if(sessionStorage.getItem("MessageList") !== null) {
         list = JSON.parse(sessionStorage.getItem("MessageList"))
         list.forEach((x,i) => {
             li = document.createElement("li")
@@ -79,7 +112,6 @@ function displayMessages() {
                 box.appendChild(li)
             }
         })
-    }
 }
 
 function addMessage() {
@@ -98,6 +130,32 @@ function addMessage() {
     displayMessages()
 }
 
-function displayProfile() {
-    userList =  
+function logout() {
+    sessionStorage.setItem("currentUserDetails", "")
+    window.location = "../index.html"
+}
+
+function editProfile() {
+    userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+    user = document.getElementById("username")
+    password = document.getElementById("password")
+    statement = document.getElementById("personalStatement")
+    education = document.getElementById("education")
+    hobbies = document.getElementById("hobby")
+    listOfHobbies = document.getElementById("listOfHobbies")
+    hobbyList = userData.hobbies
+    hobbyList.forEach((x,i) => {
+    li = document.createElement("li")
+    node = document.createTextNode(x)
+    li.appendChild(node)
+    listOfHobbies.appendChild(li)
+    })
+    user.value = "top"
+    console.log("Maple")
+    statement.value = userData.personalStatement
+    education.value = userData.education
+}
+
+function editHandler() {
+    
 }

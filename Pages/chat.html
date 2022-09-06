@@ -7,10 +7,15 @@
     <title>Simple Social</title>
 </head>
 <body>
-    <script src="../Javascript/main.js"></script>
     <center>
         <div id="info">
+            <img onclick="window.location = './display.html'" src="" alt="profile">
+            <button onclick="logout()">LogOut</button>
+        </div>
+        <div id="usersList">
+            <ul id="allUsers">
 
+            </ul>
         </div>
         <div>
             <ul id="box" style="padding-right:500px">
@@ -18,5 +23,6 @@
             <input id="textBox" type="text"> <button onclick="addMessage()">Add</button>
         </div>
     </center>
+    <script src="../Javascript/main.js"></script>
 </body>
 </html>
