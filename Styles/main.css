@@ -1,0 +1,12 @@
+#profile,.profile {
+    width:auto;
+    height:150px;
+    border-radius: 50%;
+}
+
+#usersList {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    cursor:pointer;
+}

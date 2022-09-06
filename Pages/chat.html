@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/main.css">
     <title>Simple Social</title>
 </head>
 <body>
     <center>
         <div id="info">
-            <img onclick="window.location = './display.html'" src="" alt="profile">
+            <img style="cursor:pointer" id="profile" onclick="window.location = './display.html'" src="" alt="profile">
             <button onclick="logout()">LogOut</button>
         </div>
         <div id="usersList">
-            <ul id="allUsers">
-
-            </ul>
+            <h1 onclick="window.location = './profile.html'">All Users</h1>
         </div>
         <div>
             <ul id="box" style="padding-right:500px">
@@ -23,6 +22,11 @@
             <input id="textBox" type="text"> <button onclick="addMessage()">Add</button>
         </div>
     </center>
+    <script>
+        image = document.getElementById("profile")
+        userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+        image.src = userData.img
+    </script>
     <script src="../Javascript/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ editProfile()
 hobbyHandler()
 
 function imageHandler() {
-    image = document.getElementById("profilepic")
+    image = document.getElementById("profile")
     reader = new FileReader()
     reader.onload = () => {
         if(reader.readyState === 2) {
@@ -36,7 +36,7 @@ function checkPassword() {
 }
 
 function submitHandler() {
-    image = document.getElementById("profilepic")
+    image = document.getElementById("profile")
     username = document.getElementById("username")
     password = document.getElementById("password")
     personalStatement = document.getElementById("personalStatement")
@@ -78,6 +78,7 @@ function hobbyHandler() {
         hobbyList.innerHTML = ""
         list.forEach((x,i) => {
         li = document.createElement("li")
+        li.value = i
         node = document.createTextNode(x)
         li.appendChild(node)
         hobbyList.appendChild(li)
@@ -131,31 +132,58 @@ function addMessage() {
 }
 
 function logout() {
-    sessionStorage.setItem("currentUserDetails", "")
+    sessionStorage.removeItem("currentUserDetails")
     window.location = "../index.html"
 }
 
-function editProfile() {
-    userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
-    user = document.getElementById("username")
+function editHandler() {
+    image = document.getElementById("profile")
+    username = document.getElementById("username")
     password = document.getElementById("password")
-    statement = document.getElementById("personalStatement")
+    personalStatement = document.getElementById("personalStatement")
     education = document.getElementById("education")
-    hobbies = document.getElementById("hobby")
-    listOfHobbies = document.getElementById("listOfHobbies")
-    hobbyList = userData.hobbies
-    hobbyList.forEach((x,i) => {
-    li = document.createElement("li")
-    node = document.createTextNode(x)
-    li.appendChild(node)
-    listOfHobbies.appendChild(li)
+    details = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+    hobbies = details.hobbies
+    user = {
+        img: image.src,
+        name: username.value,
+        password: password.value,
+        personalStatement: personalStatement.value,
+        education: education.value,
+        hobbies: hobbies
+    }
+    sessionStorage.setItem("currentUserDetails", JSON.stringify(user))
+    users = JSON.parse(sessionStorage.getItem("users"))
+    users.forEach((x,i) => {
+        if(x.name === user.name) {
+            x.name = user.name
+            x.img = user.img
+            x.password = user.password
+            x.personalStatement = user.personalStatement
+            x.education = user.education
+            x.hobbies = user.hobbies
+        }
     })
-    user.value = "top"
-    console.log("Maple")
-    statement.value = userData.personalStatement
-    education.value = userData.education
+    sessionStorage.setItem("users",JSON.stringify(users))
+    window.location = "./display.html"
 }
 
-function editHandler() {
-    
+function resetHobbyList() {
+    user = JSON.parse(sessionStorage.getItem("currentUserDetails"))
+    user.hobbies = []
+    users = JSON.parse(sessionStorage.getItem("users"))
+    users.forEach((x,i) => {
+        if(x.name === user.name) {
+            x.name = user.name
+            x.img = user.img
+            x.password = user.password
+            x.personalStatement = user.personalStatement
+            x.education = user.education
+            x.hobbies = []
+        }
+    })
+    sessionStorage.setItem("users", JSON.stringify(users))
+    sessionStorage.setItem("currentUserDetails", JSON.stringify(user))
+    location.reload()
+    console.log("List Reset")
 }

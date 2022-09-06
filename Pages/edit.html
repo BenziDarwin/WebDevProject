@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/main.css">
     <title>Simple Social</title>
 </head>
 <body>
@@ -19,21 +20,31 @@
     <label for="education">Education</label>
     <p><input id="education" type="text" name="education"></p><br>
     <label for="hobbies">Hobbies</label>
-    <p><input type="text" id="hobby"> <button onclick="hobbyHandler()">Add Hobby</button></p><br>
-    <ul id="hobbyList">
+    <p><input type="text" id="hobby"> <button onclick="hobbyHandler()">Add Hobby</button> <button onclick="resetHobbyList()">Reset List</button></p><br>
+    <ul  id="hobbyList">
 
     </ul>
     <button onclick="editHandler()">Accept</button><br>
     <script>
         userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
         username = document.getElementById("username")
+        password = document.getElementById("password")
         statement = document.getElementById("personalStatement")
         education = document.getElementById("education")
+        hobbies = document.getElementById("hobbyList")
         image = document.getElementById("profile")
         username.value = userData.name
+        password.value = userData.password
         statement.innerHTML = userData.personalStatement
         education.value = userData.education
         image.src = userData.img
+        userData.hobbies.forEach((x,i) => {
+            li = document.createElement("li")
+            li.value = i
+            node = document.createTextNode(x)
+            li.appendChild(node)
+            hobbies.appendChild(li)
+        })
     </script>
     <script src="../Javascript/main.js"></script>
 </body>

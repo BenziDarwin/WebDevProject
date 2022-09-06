@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/main.css">
+    <title>Simple Social</title>
+</head>
+<body>
+    <button style="margin:10px" onclick="window.location = './chat.html'">Back to chat</button>
+    <center><h1>User Profiles</h1></center>
+    <div id="container" class="grid-container">
+
+    </div>
+    <script>
+    function displayProfiles() {
+        users = JSON.parse(sessionStorage.getItem("users"))
+        users.forEach((x,i) => {
+            container = document.getElementById("container")
+            div = document.createElement("div")
+            div.setAttribute("class","grid-item");
+            img = document.createElement("img")
+            br = document.createElement("br")
+            img.setAttribute("src",x.img)
+            img.setAttribute("class","profile")
+            img.setAttribute("alt","profile pic")
+            div.appendChild(img)
+            div.appendChild(br)
+            h4 = document.createElement("h4")
+            textnode = document.createTextNode("Username:")
+            h4.appendChild(textnode)
+            div.appendChild(h4)
+            p = document.createElement("p")
+            p.setAttribute("class","user")
+            textnode = document.createTextNode(x.name)
+            p.appendChild(textnode)
+            div.appendChild(p)
+            h4 = document.createElement("h4")
+            textnode = document.createTextNode("Personal Statement:")
+            h4.appendChild(textnode)
+            div.appendChild(h4)
+            p = document.createElement("p")
+            p.setAttribute("class","ps")
+            textnode = document.createTextNode(x.personalStatement)
+            p.appendChild(textnode)
+            div.appendChild(p)
+            h4 = document.createElement("h4")
+            textnode = document.createTextNode("Education:")
+            h4.appendChild(textnode)
+            div.appendChild(h4)
+            p = document.createElement("p")
+            p.setAttribute("class","edu")
+            textnode = document.createTextNode(x.education)
+            p.appendChild(textnode)
+            div.appendChild(p)
+            h4 = document.createElement("h4")
+            textnode = document.createTextNode("Hobbies:")
+            h4.appendChild(textnode)
+            div.appendChild(h4)
+            ul = document.createElement("ul")
+            ul.setAttribute("class","hob")
+            x.hobbies.forEach((y,z) => {
+                li = document.createElement("li")
+                node = document.createTextNode(y)
+                li.appendChild(node)
+                ul.appendChild(li)
+            })
+            div.appendChild(ul)
+            container.appendChild(div)
+        })
+    }
+    displayProfiles()
+    </script>
+</body>
+</html>
