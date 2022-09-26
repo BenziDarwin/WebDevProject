@@ -18,5 +18,13 @@
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: rgb(243, 237, 229);
+}
+
+.display {
+    margin: 10px;
+    padding: 20px;
+    width: 50%;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.408);
 }

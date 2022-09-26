@@ -5,21 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles/main.css">
-    <title>Document</title>
+    <title>Simple Social</title>
 </head>
 <body>
     <center>
-        <img id="profile" src="" alt="profile"><br>
-        <h4>Username:</h4>
-        <p id="user"></p>
-        <h4>Personal Statement:</h4>
-        <p id="ps">Words</p>
-        <h4>Education:</h4>
-        <p id="edu">Current level</p>
-        <h4>Hobbies:</h4>
-        <ul id="hob">
-        </ul>
-        <button onclick="window.location = './edit.html'">Edit</button>&nbsp;<button onclick="window.location = './chat.html'">Back to chat</button>
+        <div class="display">
+            <img id="profile" src="" alt="profile"><br>
+            <h4>Username:</h4>
+            <p id="user"></p>
+            <h4>Personal Statement:</h4>
+            <p id="ps">Words</p>
+            <h4>Education:</h4>
+            <p id="edu">Current level</p>
+            <h4>Hobbies:</h4>
+            <ul id="hob">
+            </ul>
+            <button onclick="window.location = './edit.html'">Edit</button>&nbsp;<button onclick="window.location = './chat.html'">Back to chat</button>
+        </div>
     </center>
     <script>
         userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))

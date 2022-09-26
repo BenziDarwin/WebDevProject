@@ -9,22 +9,24 @@
 </head>
 <body>
     <h1>Edit</h1>
-    <img id="profile" src="" alt="What you look like."><br>
-    <input id="name" type="file" name="image" accept="image/*" onchange="imageHandler()"><br>
-    <label for="username">Username</label>
-    <p><input id="username" type="text" name="username"></p><br>
-    <label for="password">Password</label>
-    <p><input id="password" type="password" name="password"></p><br>
-    <label for="password">Personal statement</label>
-    <p><textarea id="personalStatement" name="personalStatement" cols="30" rows="4"></textarea></p><br>
-    <label for="education">Education</label>
-    <p><input id="education" type="text" name="education"></p><br>
-    <label for="hobbies">Hobbies</label>
-    <p><input type="text" id="hobby"> <button onclick="hobbyHandler()">Add Hobby</button> <button onclick="resetHobbyList()">Reset List</button></p><br>
-    <ul  id="hobbyList">
-
-    </ul>
-    <button onclick="editHandler()">Accept</button><br>
+    <div class="display">
+        <img id="profile" src="" alt="What you look like."><br>
+        <input id="name" type="file" name="image" accept="image/*" onchange="imageHandler()"><br>
+        <label for="username">Username</label>
+        <p><input id="username" type="text" name="username"></p><br>
+        <label for="password">Password</label>
+        <p><input id="password" type="password" name="password"></p><br>
+        <label for="password">Personal statement</label>
+        <p><textarea id="personalStatement" name="personalStatement" cols="30" rows="4"></textarea></p><br>
+        <label for="education">Education</label>
+        <p><input id="education" type="text" name="education"></p><br>
+        <label for="hobbies">Hobbies</label>
+        <p><input type="text" id="hobby"> <button onclick="hobbyHandler()">Add Hobby</button> <button onclick="resetHobbyList()">Reset List</button></p><br>
+        <ul  id="hobbyList">
+    
+        </ul>
+        <button onclick="editHandler()">Accept</button><br>
+    </div>
     <script>
         userData = JSON.parse(sessionStorage.getItem("currentUserDetails"))
         username = document.getElementById("username")

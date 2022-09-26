@@ -6,11 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Styles/main.css">
     <title>Simple Social</title>
+    <style>
+        #login {
+            margin-top: 100px;
+            padding: 10px;
+            padding-inline: 30px;
+            font-size: 20px;
+            background-color: goldenrod;
+            border-radius: 8px;
+            box-shadow: 2px 2px 3px;
+        }
+        #login:hover {
+            background-color: rgb(161, 119, 13);
+            transition-timing-function: ease;
+            transition: all 0.5s;
+        }
+    </style>
 </head>
-<body>
-    <center>
-        <h1>Simple Social</h1>
-        <button onclick="window.location='./Pages/Login.html'">Login</button>
-    </center>
-</body>
+    <body>
+        <center>
+            <h1>Simple Social</h1>
+                <button id="login" onclick="window.location='./Pages/Login.html'">Login</button>
+        </center>
+    </body>
 </html>
